@@ -1,0 +1,4 @@
+disks/*
+venv/*
+.idea/*
+output.txt
