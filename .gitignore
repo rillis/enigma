@@ -1,4 +1,5 @@
 disks/*
+disks_special/*
 venv/*
 .idea/*
 output.txt

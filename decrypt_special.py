@@ -11,7 +11,6 @@ def add(x, y):
 def subtract(x, y):
     return (x - y + len(dict_letters)) % len(dict_letters)
 
-
 def char_num(letter):
     return dict_letters.index(letter)
 
@@ -80,6 +79,10 @@ with open('config.cfg', 'r') as file:
 for line in lines:
     exec(line)
 
+disks = inverse_disks(disks)
+connector_start = invert_mapping(connector_start)
+connector_end = invert_mapping(connector_end)
+
 # ------------ run
 plugboard = configure_plugboard(plugboard_config)
 
@@ -93,7 +96,7 @@ for letter in complete_input:
         # Through plugboard
         actual = char_num(plugboard[num_char(actual)])
 
-        # Forward through connectors and rotors
+        # Reverse the order for decrypt
         actual = connector_start[actual]
 
         for i in range(3):
