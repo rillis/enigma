@@ -1,16 +1,22 @@
-import string, sys, os
+import os
+import string
+import sys
 
 def add(x, y):
     return (x + y) % 26
 
+
 def subtract(x, y):
     return (x - y + 26) % 26  # Adiciona 26 para evitar valores negativos
+
 
 def char_num(letter):
     return ord(letter) - ord('a')
 
+
 def num_char(num):
     return chr(num + ord('a'))
+
 
 def configure_plugboard(pc):
     pb = {}
@@ -22,8 +28,10 @@ def configure_plugboard(pc):
             pb[x] = x
     return pb
 
+
 def invert_mapping(mapping):
     return {v: k for k, v in mapping.items()}
+
 
 def rotate_disk(disk):
     new_disk = [disk[0], disk[1], disk[2]]
@@ -38,14 +46,16 @@ def rotate_disk(disk):
         new_disk[2] = 0
     return new_disk
 
+
 def inverse_disks(disks):
     return [{v: k for k, v in disk.items()} for disk in disks]
 
 
 # ------------ start "constants"
 # random generated disks
-for x in ['disk0.enigma', 'disk1.enigma', 'disk2.enigma', 'disk3.enigma', 'disk4.enigma', 'diskI.enigma', 'diskF.enigma']:
-    if not os.path.isfile("disks/"+x):
+for x in ['disk0.enigma', 'disk1.enigma', 'disk2.enigma', 'disk3.enigma', 'disk4.enigma', 'diskI.enigma',
+          'diskF.enigma']:
+    if not os.path.isfile("disks/" + x):
         print("Disks not generated/loaded, please run random_disks.py")
         sys.exit()
 
@@ -68,7 +78,6 @@ with open('config.cfg', 'r') as file:
 for line in lines:
     exec(line)
 
-
 disks = inverse_disks(disks)
 connector_start = invert_mapping(connector_start)
 connector_end = invert_mapping(connector_end)
@@ -85,7 +94,6 @@ for letter in complete_input:
 
         # Through plugboard
         actual = char_num(plugboard[num_char(actual)])
-
 
         # Reverse the order for decrypt
         actual = connector_start[actual]
