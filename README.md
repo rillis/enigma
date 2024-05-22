@@ -1,7 +1,12 @@
-# Enigma
+# enigma
 Python Enigma machine
 
-### Using:
-First time: Run the random_disk.py to generate "disks" folder.\
-Run encrypt.py/decrypt.py.\
-Optional: Edit config.cfg file.
+### Install:
+Run random_disk.py to generate "disks" and "disks_special" folders.\
+YYou can modify these files to customize the machine.
+
+### Running
+**Optional:** *Edit the config.cfg file for the machine's initial state.*
+
+**Default Enigma Machine, lowercase ASCII letters:** Run encrypt.py/decrypt.py.\
+**Modified Enigma Machine, lowercase/uppercase ASCII letters + symbols:** Run encrypt_special.py/decrypt_special.py.
